@@ -1,0 +1,96 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: koku-worker
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: koku-worker
+spec:
+  selector:
+    app: koku-worker
+  ports:
+    - name: port1
+      protocol: TCP
+      port: 6001
+      targetPort: 9000
+    - name: port2
+      protocol: TCP
+      port: 6002
+      targetPort: 9000
+    - name: port3
+      protocol: TCP
+      port: 6003
+      targetPort: 9000
+    - name: port4
+      protocol: TCP
+      port: 6004
+      targetPort: 9000
+    - name: port5
+      protocol: TCP
+      port: 6005
+      targetPort: 9000
+    - name: port6
+      protocol: TCP
+      port: 6006
+      targetPort: 9000
+    - name: port7
+      protocol: TCP
+      port: 6007
+      targetPort: 9000
+    - name: port8
+      protocol: TCP
+      port: 6008
+      targetPort: 9000
+    - name: port9
+      protocol: TCP
+      port: 6009
+      targetPort: 9000
+    - name: port10
+      protocol: TCP
+      port: 6010
+      targetPort: 9000
+    - name: port11
+      protocol: TCP
+      port: 6011
+      targetPort: 9000
+    - name: port12
+      protocol: TCP
+      port: 6012
+      targetPort: 9000
+    - name: port13
+      protocol: TCP
+      port: 6013
+      targetPort: 9000
+    - name: port14
+      protocol: TCP
+      port: 6014
+      targetPort: 9000
+    - name: port15
+      protocol: TCP
+      port: 6015
+      targetPort: 9000
+    - name: port16
+      protocol: TCP
+      port: 6016
+      targetPort: 9000
+    - name: port17
+      protocol: TCP
+      port: 6017
+      targetPort: 9000
+    - name: port18
+      protocol: TCP
+      port: 6018
+      targetPort: 9000
+    - name: port19
+      protocol: TCP
+      port: 6019
+      targetPort: 9000
+    - name: port20
+      protocol: TCP
+      port: 6020
+      targetPort: 9000
+    - name: port21
+      protocol: TCP
+      port: 5678
+      targetPort: 5678
+  type: ClusterIP

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: koku-server
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: koku-server
+spec:
+  replicas: {{ .Values.kokuServer.replicas }}
+  selector:
+    matchLabels:
+      app: koku-server
+  template:
+    metadata:
+      labels:
+        app: koku-server
+    spec:
+      containers:
+        - name: koku-server
+          image: {{ .Values.koku.image }}
+          workingDir: /koku
+          command: ["/koku/run_server.sh"]
+          volumeMounts:
+            - name: credentials
+              mountPath: /etc/credentials  
+          envFrom:
+            - configMapRef:
+                name: koku-server-config
+            - configMapRef:
+                name: koku-config
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+            - containerPort: 9000
+      volumes:  
+        - name: credentials
+          secret:
+            secretName: koku-credentials

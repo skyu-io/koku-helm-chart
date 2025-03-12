@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: koku-redis
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: koku-redis
+spec:
+  replicas: {{ .Values.redis.replicas }}
+  selector:
+    matchLabels:
+      app: koku-redis
+  template:
+    metadata:
+      labels:
+        app: koku-redis
+    spec:
+      containers:
+        - name: koku-redis
+          image: {{ .Values.redis.image }}
+          ports:
+            - containerPort: 6379
+          envFrom:
+            - configMapRef:
+                name: koku-config
+          imagePullPolicy: Always
+

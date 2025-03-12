@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unleash
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: unleash
+  annotations:
+    "helm.sh/hook-depends-on": '["Deployment/koku-db"]'
+spec:
+  replicas:  {{ .Values.unleash.replicas }}
+  selector:
+    matchLabels:
+      app: unleash
+  template:
+    metadata:
+      labels:
+        app: unleash
+    spec:
+      containers:
+        - name: unleash
+          image: {{ .Values.unleash.image }}
+          ports:
+            - containerPort: 4242
+          envFrom:
+            - configMapRef:
+                name: unleash-config
+            - configMapRef:
+                name: koku-config
+          imagePullPolicy: Always
+

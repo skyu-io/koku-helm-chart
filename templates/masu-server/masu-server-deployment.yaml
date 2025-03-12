@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: masu-server
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: masu-server
+spec:
+  replicas: {{ .Values.masuServer.replicas }}
+  selector:
+    matchLabels:
+      app: masu-server
+  template:
+    metadata:
+      labels:
+        app: masu-server
+    spec:
+      containers:
+        - name: masu-server
+          image: {{ .Values.koku.image }}
+          workingDir: /koku
+          command: ["/koku/run_server.sh"]
+          volumeMounts:
+            - name: credentials
+              mountPath: /etc/credentials
+          envFrom:
+            - configMapRef:
+                name: masu-server-config
+            - configMapRef:
+                name: koku-config
+          ports:
+            - containerPort: 8000
+            - containerPort: 9000
+          imagePullPolicy: Always
+      volumes: 
+        - name: credentials
+          secret:
+            secretName: koku-credentials

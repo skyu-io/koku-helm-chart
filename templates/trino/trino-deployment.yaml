@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trino
+  namespace: {{ .Values.namespace }}
+  annotations:
+    "helm.sh/hook-depends-on": '["Deployment/hive-metastore"]'
+spec:
+  replicas: {{ .Values.trino.replicas }}
+  selector:
+    matchLabels:
+      app: trino
+  template:
+    metadata:
+      labels:
+        app: trino
+    spec:
+      initContainers: 
+        - name: trino-init
+          image: busybox:latest
+          command:
+            - /bin/sh
+            - -c
+            - |
+              mkdir -p /data/trino/data && mkdir -p /data/trino/logs && chmod -R 777 /data/trino
+          volumeMounts:
+            - name: shared-storage
+              mountPath: /data/trino
+      containers:
+        - name: trino
+          image: {{ .Values.trino.image }}
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: grpc
+              containerPort: 10000
+          envFrom:
+            - configMapRef:
+                name: trino-config
+            - configMapRef:
+                name: koku-config
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: shared-storage
+              mountPath: /data/trino
+          resources:
+            limits:
+              memory: "2Gi"
+              cpu: "1"
+            requests:
+              memory: "1Gi"
+              cpu: "0.5"
+      volumes:
+        - name: shared-storage
+          persistentVolumeClaim:
+            claimName: trino-pvc  

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hive-metastore
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: hive-metastore
+  annotations:
+    "helm.sh/hook-depends-on": '["Deployment/koku-db", "Deployment/minio", "Job/create-parquet-bucket"]'
+spec:
+  replicas: {{ .Values.hiveMetastore.replicas }}
+  selector:
+    matchLabels:
+      app: hive-metastore
+  template:
+    metadata:
+      labels:
+        app: hive-metastore
+    spec:
+      containers:
+        - name: hive-metastore
+          image: {{ .Values.hiveMetastore.image }}
+          ports:
+            - containerPort: 8000
+              name: http
+          envFrom:
+            - configMapRef:
+                name: hive-metastore-config
+            - configMapRef:
+                name: koku-config
+          imagePullPolicy: Always

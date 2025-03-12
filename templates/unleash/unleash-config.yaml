@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: unleash-config
+  namespace: {{ .Values.namespace }}
+data:
+  UNLEASH_ADMIN_TOKEN: "{{ .Values.unleash.adminToken }}" 
+  UNLEASH_TOKEN: "{{ .Values.unleash.token }}"  
+  UNLEASH_DATABASE_USER: "postgres"  
+  UNLEASH_DATABASE_PASSWORD: "postgres"  
+  UNLEASH_PORT: "4242"
+  LOG_LEVEL: "INFO"
+  DATABASE_HOST: "koku-db.{{ .Values.namespace }}.svc.cluster.local"
+  DATABASE_NAME: "unleash"
+  DATABASE_SSL: "false"
+  IMPORT_DROP_BEFORE_IMPORT: "true"
+  IMPORT_FILE: "/.unleash/flags.json"
+  CHECK_VERSION: "false"
+  INIT_ADMIN_API_TOKENS: "{{ .Values.unleash.adminToken }}"
+  INIT_CLIENT_API_TOKENS: "{{ .Values.unleash.token }}"
+  DATABASE_USERNAME: "postgres"
+  DATABASE_PASSWORD: "postgres"

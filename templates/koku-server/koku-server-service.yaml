@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: koku-server
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: koku-server
+  ports:
+    - name: port1
+      protocol: TCP
+      port: 8000       
+      targetPort: 8000 
+    - name: port2
+      protocol: TCP
+      port: 8001       
+      targetPort: 9000 
+  type: ClusterIP

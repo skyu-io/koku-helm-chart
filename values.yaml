@@ -1,0 +1,65 @@
+# All the deployments will be done to this namespace
+namespace: kokutest
+
+# Passing AWS and OCI values for the credentials files that is created by Koku
+credentials:
+  awsAccessKeyId: ""
+  awsSecretAccessKey: ""
+  ociUser: ocid1.user.id
+  ociFingerprint: 00000000000000000
+  ociTenancy: ocid1.tenancy.id
+
+# Koku base image - Used by Koku Server, Koku Worker, Masu Server
+koku:
+  image: public.ecr.aws/v0r6c2e2/koku_base:latest
+
+# Koku Server
+kokuServer:
+  replicas: 1
+
+# Koku Worker
+kokuWorker:
+  replicas: 1
+
+# Masu Server
+masuServer:
+  replicas: 1
+
+# Create Parquat Bucket
+createParquatBucket:
+  image: minio/mc:latest
+  replicas: 0
+  completions: 1
+
+# Hive Metastore
+hiveMetastore:
+  image:  public.ecr.aws/v0r6c2e2/hive-metastore:latest
+  replicas: 1
+
+# Koku DB
+kokuDB:
+  image:  public.ecr.aws/v0r6c2e2/koku-db:14
+  replicas: 1
+
+# Minio
+minio:
+  image:  public.ecr.aws/v0r6c2e2/minio:latest
+  replicas: 1
+
+# Trino
+trino:
+  image:  public.ecr.aws/v0r6c2e2/trino:latest
+  replicas: 1
+
+# Unleash
+unleash: 
+  image:  public.ecr.aws/v0r6c2e2/unleash:latest
+  replicas: 1
+  adminToken: "*:*.dbffffc83b1f92eeaf133a7eb878d4c58231acc159b5e1478ce53cfc"
+  token: "*:development.dbffffc83b1f92eeaf133a7eb878d4c58231acc159b5e1478ce53cfc"
+  patToken: "user:6188b62f2f59348f3c195b66983147111682f4bb78a3f7ed9626bd84"
+
+# Koku Redis
+redis:
+  image: redis:5.0.4
+  replicas: 1

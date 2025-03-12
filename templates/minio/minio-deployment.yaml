@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: minio
+spec:
+  replicas: {{ .Values.minio.replicas }}
+  selector:
+    matchLabels:
+      app: minio
+  template:
+    metadata:
+      labels:
+        app: minio
+    spec:
+      containers:
+        - name: minio
+          image: {{ .Values.minio.image }}
+          ports:
+            - containerPort: 9000
+            - containerPort: 9090
+          envFrom:
+            - configMapRef:
+                name: minio-config
+            - configMapRef:
+                name: koku-config
+          command:
+            - minio
+            - server
+            - /home/kminio/data
+            - --console-address
+            - ":9090"
+          volumeMounts:
+            - name: shared-storage
+              mountPath: /home/kminio/data
+      volumes:
+        - name: shared-storage
+          persistentVolumeClaim:
+            claimName: minio-pvc  

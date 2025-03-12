@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: minio-config
+  namespace: {{ .Values.namespace }}
+data:
+  MINIO_ROOT_USER: "kokuminioaccess"
+  MINIO_ROOT_PASSWORD: "kokuminiosecret"
+  MINIO_USERNAME: "kminio"
+  MINIO_GROUPNAME: "kminio"
+  MINIO_UID: "1000"  
+  MINIO_GID: "1000"  

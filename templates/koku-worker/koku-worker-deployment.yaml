@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: koku-worker
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: koku-worker
+spec:
+  replicas: {{ .Values.kokuWorker.replicas }}
+  selector:
+    matchLabels:
+      app: koku-worker
+  template:
+    metadata:
+      labels:
+        app: koku-worker
+    spec:
+      containers:
+        - name: koku-worker
+          image: {{ .Values.koku.image }}
+          workingDir: /koku/koku
+          command:
+            - python
+            - manage.py
+            - restart_celery
+          volumeMounts:
+            - name: credentials
+              mountPath: /etc/credentials
+          envFrom:
+            - configMapRef:
+                name: koku-worker-config
+            - configMapRef:
+                name: koku-config
+          ports:
+            - containerPort: 9000
+            - containerPort: 5678
+          imagePullPolicy: Always
+      volumes:  
+        - name: credentials
+          secret:
+            secretName: koku-credentials

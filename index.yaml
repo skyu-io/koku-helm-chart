@@ -1,0 +1,23 @@
+apiVersion: v1
+entries:
+  koku:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-03-12T17:28:35.78446619+05:30"
+    description: A Helm chart for deploying Koku - Cost Management Solution
+    digest: b82f3b241e49ebf91b65ab724bca11d7d53a0b57b70db32f4e766d244c7dba5a
+    home: https://github.com/project-koku/koku
+    icon: https://raw.githubusercontent.com/project-koku/koku/master/docs/koku_logo.png
+    keywords:
+    - cost-management
+    - cloud-cost
+    - analytics
+    maintainers:
+    - email: desilvabethmin@gmail.com
+      name: Januda Bethmin
+    name: koku
+    type: application
+    urls:
+    - https://skyu-io.github.io/koku-helm-chart/koku-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-03-12T17:28:35.783990616+05:30"

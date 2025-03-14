@@ -52,7 +52,3 @@ To uninstall Koku and remove all associated resources, run:
 ```sh
 helm uninstall koku -n koku
 ```
-
-## Support
-
-For any issues, refer to the [official documentation](https://skyu-io.github.io/koku-helm-chart/) or reach out to the support team.

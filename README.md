@@ -52,3 +52,10 @@ To uninstall Koku and remove all associated resources, run:
 ```sh
 helm uninstall koku -n koku
 ```
+
+
+## Port-forwarding the Koku server.  
+
+```sh
+kubectl port-forward svc/koku-server -n koku 8000
+```

@@ -54,7 +54,7 @@ helm uninstall koku -n koku
 ```
 
 
-## Port-forwarding the Koku server.  
+## Port-forwarding the Koku server
 
 ```sh
 kubectl port-forward svc/koku-server -n koku 8000

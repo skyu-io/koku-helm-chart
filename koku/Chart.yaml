@@ -32,5 +32,5 @@ keywords:
   - cloud-cost
   - analytics
 
-home: https://github.com/project-koku/koku
-icon: https://avatars.githubusercontent.com/u/37702693?s=48&v=4
+home: https://github.com/skyu-io/koku-helm-chart
+icon: https://github.com/skyu-io/koku-helm-chart/blob/main/koku-logo.png

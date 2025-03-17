@@ -3,11 +3,11 @@ entries:
   koku:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-03-17T11:09:45.952616249+05:30"
+    created: "2025-03-17T12:15:59.735846302+05:30"
     description: A Helm chart for deploying Koku - Cost Management Solution
-    digest: e0f784dc307397a3431925f06c7426918ad2f3714781ba33502afb9bf648b043
-    home: https://github.com/project-koku/koku
-    icon: https://avatars.githubusercontent.com/u/37702693?s=48&v=4
+    digest: 1d2d1e816c2b3fc8f3dbd6fca7a4d1c112d6f837a377757dc7ceb493990ab233
+    home: https://github.com/skyu-io/koku-helm-chart
+    icon: https://github.com/skyu-io/koku-helm-chart/blob/main/koku-logo.png
     keywords:
     - cost-management
     - cloud-cost
@@ -20,4 +20,4 @@ entries:
     urls:
     - https://skyu-io.github.io/koku-helm-chart/koku-0.1.0.tgz
     version: 0.1.0
-generated: "2025-03-17T11:09:45.952063783+05:30"
+generated: "2025-03-17T12:15:59.734260341+05:30"

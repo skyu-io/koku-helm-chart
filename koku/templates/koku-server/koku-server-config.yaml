@@ -4,13 +4,13 @@ metadata:
   name: koku-server-config
   namespace: {{ .Values.namespace }}
 data:
-  DATABASE_SERVICE_NAME: "POSTGRES_SQL"
-  DATABASE_ENGINE: "postgresql"
-  DATABASE_NAME: "postgres"
-  POSTGRES_SQL_SERVICE_HOST: "koku-db.{{ .Values.namespace }}.svc.cluster.local"
-  POSTGRES_SQL_SERVICE_PORT: "5432"
-  DATABASE_USER: "postgres"
-  DATABASE_PASSWORD: "postgres"
+  DATABASE_SERVICE_NAME: "{{ .Values.database.databaseServiceName }}"
+  DATABASE_ENGINE: "{{ .Values.database.databaseEngine }}"
+  DATABASE_NAME: "{{ .Values.database.databaseName }}"
+  POSTGRES_SQL_SERVICE_HOST: "{{ .Values.database.postgresSQLServiceHost }}"
+  POSTGRES_SQL_SERVICE_PORT: "{{ .Values.database.postgresSQLServicePort }}"
+  DATABASE_USER: "{{ .Values.database.databaseUser }}"
+  DATABASE_PASSWORD: "{{ .Values.database.databasePassword }}"
   KOKU_SOURCES_CLIENT_HOST: "sources-client"
   KOKU_SOURCES_CLIENT_PORT: "9000"
   DJANGO_READ_DOT_ENV_FILE: "True"

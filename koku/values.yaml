@@ -63,3 +63,19 @@ unleash:
 redis:
   image: redis:5.0.4
   replicas: 1
+
+database:
+  databaseServiceName: POSTGRES_SQL
+  databaseEngine: postgresql
+  postgresSQLServiceHost: "koku-db.{{ .Values.namespace }}.svc.cluster.local"
+  postgresSQLServicePort: 5432
+  databaseName: postgres
+  databaseUser: postgres
+  databaseAdmin: postgres
+  databasePassword: postgres
+  hiveDatabaseName: hive
+  hiveDatabaseUser: hive
+  hiveDatabasePassword: hive
+  unleashDatabaseName: unleash
+  unleashDatabaseUser: postgres
+  unleashDatabasePassword: postgres

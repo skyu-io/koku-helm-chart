@@ -10,6 +10,10 @@ Ensure you have the following installed before proceeding:
 - Kubernetes cluster configured
 - AWS credentials
 
+
+> [!CAUTION]
+> If you want to make the database persistant, use a RDS postgres database.
+
 ## Installation Steps
 
 ### 1. Add Koku Helm Repository
@@ -59,6 +63,3 @@ helm uninstall koku -n koku
 ```sh
 kubectl port-forward svc/koku-server -n koku 8000
 ```
-
-> [!CAUTION]
-> If you want to make the database persistant, use a RDS postgres database.

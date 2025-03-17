@@ -6,7 +6,7 @@ metadata:
   labels:
     app: unleash
   annotations:
-    "helm.sh/hook-depends-on": '["Deployment/koku-db"]'
+    "helm.sh/hook-depends-on": '["deployment/koku-db"]'
 spec:
   replicas:  {{ .Values.unleash.replicas }}
   selector:

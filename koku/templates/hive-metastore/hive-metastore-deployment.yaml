@@ -6,7 +6,7 @@ metadata:
   labels:
     app: hive-metastore
   annotations:
-    "helm.sh/hook-depends-on": '["Deployment/koku-db", "Deployment/minio", "Job/create-parquet-bucket"]'
+    "helm.sh/hook-depends-on": '["deployment/koku-db", "deployment/minio", "job/create-parquet-bucket"]'
 spec:
   replicas: {{ .Values.hiveMetastore.replicas }}
   selector:

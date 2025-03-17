@@ -1,5 +1,7 @@
 # Koku Helm Chart Deployment
 
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/koku)](https://artifacthub.io/packages/search?repo=koku)
+
 ## About Koku
 Koku is a cloud-native application designed to simplify cost management and monitoring in Kubernetes environments. It provides insights into resource utilization, helping organizations optimize their cloud spending efficiently. Koku integrates seamlessly with AWS and Kubernetes, enabling real-time cost tracking and analysis.
 

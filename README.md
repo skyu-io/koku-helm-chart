@@ -59,3 +59,6 @@ helm uninstall koku -n koku
 ```sh
 kubectl port-forward svc/koku-server -n koku 8000
 ```
+
+> [!CAUTION]
+> If you want to make the database persistant, use a RDS postgres database.

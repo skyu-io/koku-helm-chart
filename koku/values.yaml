@@ -1,5 +1,5 @@
 # All the deployments will be done to this namespace
-namespace: koku
+namespace: kokutest
 
 # Passing AWS and OCI values for the credentials files that is created by Koku
 credentials:

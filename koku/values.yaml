@@ -64,6 +64,7 @@ redis:
   image: redis:5.0.4
   replicas: 1
 
+# Database Config
 database:
   databaseServiceName: POSTGRES_SQL
   databaseEngine: postgresql

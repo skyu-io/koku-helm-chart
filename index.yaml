@@ -7,7 +7,7 @@ entries:
     description: A Helm chart for deploying Koku - Cost Management Solution
     digest: e0f784dc307397a3431925f06c7426918ad2f3714781ba33502afb9bf648b043
     home: https://github.com/project-koku/koku
-    icon: https://raw.githubusercontent.com/project-koku/koku/master/docs/koku_logo.png
+    icon: https://avatars.githubusercontent.com/u/37702693?s=48&v=4
     keywords:
     - cost-management
     - cloud-cost

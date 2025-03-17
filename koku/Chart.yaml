@@ -33,4 +33,4 @@ keywords:
   - analytics
 
 home: https://github.com/skyu-io/koku-helm-chart
-icon: https://github.com/skyu-io/koku-helm-chart/blob/main/koku-logo.png
+icon: https://raw.githubusercontent.com/skyu-io/koku-helm-chart/main/koku-logo.png

@@ -19,6 +19,25 @@ spec:
         runAsUser: 999
         runAsGroup: 999
         fsGroup: 999
+      initContainers: 
+        - name: koku-init
+          image: {{ .Values.kokuDB.image }}
+          command:
+            - /bin/sh
+            - -c
+            - |
+              mkdir -p /tempkoku
+              cp -R /var/lib/postgresql/data/* /tempkoku
+              chmod -R 777 /tempkoku
+              chown -R 999:999 /tempkoku
+              chmod 0700 /var/lib/postgresql/data 
+              chown -R postgres:postgres /var/lib/postgresql/data 
+          securityContext:
+            runAsUser: 0  
+            runAsGroup: 0
+          volumeMounts:
+            - name: koku-db-storage
+              mountPath: /tempkoku
       containers:
         - name: koku-db
           image: {{ .Values.kokuDB.image }}
@@ -27,48 +46,35 @@ spec:
                 name: koku-db-config           
             - configMapRef:
                 name: koku-config  
+          volumeMounts:
+            - name: koku-db-storage
+              mountPath: /tempkoku
           ports:
             - containerPort: 5432
           command:
-            - "postgres"
-            - "-c"
-            - "ssl=on"
-            - "-c"
-            - "ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem"
-            - "-c"
-            - "ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key"
-            - "-c"
-            - "max_connections=1710"
-            - "-c"
-            - "shared_preload_libraries=pg_stat_statements"
-            - "-c"
-            - "autovacuum_max_workers=8"
-            - "-c"
-            - "autovacuum_vacuum_cost_limit=4800"
-            - "-c"
-            - "autovacuum_vacuum_cost_delay=10"
-            - "-c"
-            - "max_locks_per_transaction=72"
-            - "-c"
-            - "pg_stat_statements.max=2000"
-            - "-c"
-            - "pg_stat_statements.save=off"
-            - "-c"
-            - "pg_stat_statements.track_utility=off"
-            - "-c"
-            - "track_activity_query_size=2048"
-            - "-c"
-            - "track_functions=pl"
-            - "-c"
-            - "log_min_error_statement=error"
-            - "-c"
-            - "log_min_duration_statement=2000"
-            - "-c"
-            - "logging_collector=on"
-            - "-c"
-            - "log_line_prefix=%t:%r:%u@%d:[%p]:"
-            - "-c"
-            - "log_statement=mod"
+            - /bin/sh
+            - -c
+            - |
+                exec postgres \
+                  -c ssl=on \
+                  -c ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem \
+                  -c ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key \
+                  -c max_connections=1710 \
+                  -c shared_preload_libraries=pg_stat_statements \
+                  -c autovacuum_max_workers=8 \
+                  -c autovacuum_vacuum_cost_limit=4800 \
+                  -c autovacuum_vacuum_cost_delay=10 \
+                  -c max_locks_per_transaction=72 \
+                  -c pg_stat_statements.max=2000 \
+                  -c pg_stat_statements.save=off \
+                  -c pg_stat_statements.track_utility=off \
+                  -c track_activity_query_size=2048 \
+                  -c track_functions=pl \
+                  -c log_min_error_statement=error \
+                  -c log_min_duration_statement=2000 \
+                  -c logging_collector=on \
+                  -c log_line_prefix=%t:%r:%u@%d:[%p]: \
+                  -c log_statement=mod
           livenessProbe:
             exec:
               command:
@@ -89,3 +95,7 @@ spec:
             periodSeconds: 10
             timeoutSeconds: 2
             failureThreshold: 3
+      volumes:
+        - name: koku-db-storage
+          persistentVolumeClaim:
+            claimName: koku-db-pvc

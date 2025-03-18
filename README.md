@@ -12,10 +12,6 @@ Ensure you have the following installed before proceeding:
 - Kubernetes cluster configured
 - AWS credentials
 
-
-> [!CAUTION]
-> If you want to make the database persistant, use a RDS postgres database.
-
 ## Installation Steps
 
 ### 1. Add Koku Helm Repository

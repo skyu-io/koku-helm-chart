@@ -80,3 +80,8 @@ database:
   unleashDatabaseName: unleash
   unleashDatabaseUser: postgres
   unleashDatabasePassword: postgres
+
+# Minio Config
+minioBucket:
+  s3AccessKey: kokuminioaccess
+  s3Secret: kokuminiosecret

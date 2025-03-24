@@ -4,9 +4,9 @@ metadata:
   name: koku-db-config
   namespace: {{ .Values.namespace }}
 data:
-  POSTGRES_DB: "postgres"
-  POSTGRES_USER: "postgres"
-  POSTGRES_PASSWORD: "postgres"
+  POSTGRES_DB: "{{ .Values.database.databaseName }}"
+  POSTGRES_USER: "{{ .Values.database.databaseUser }}"
+  POSTGRES_PASSWORD: "{{ .Values.database.databasePassword }}"
   _PG_CREATE_DATABASES: "postgres|postgres,unleash|postgres"
   POSTGRES_SQL_SERVICE_PORT: "5432"
   DATABASE_DATA_DIR: "postgresql"

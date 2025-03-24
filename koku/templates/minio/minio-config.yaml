@@ -4,8 +4,8 @@ metadata:
   name: minio-config
   namespace: {{ .Values.namespace }}
 data:
-  MINIO_ROOT_USER: "kokuminioaccess"
-  MINIO_ROOT_PASSWORD: "kokuminiosecret"
+  MINIO_ROOT_USER: "{{ .Values.minioBucket.s3AccessKey }}"
+  MINIO_ROOT_PASSWORD: "{{ .Values.minioBucket.s3Secret }}"
   MINIO_USERNAME: "kminio"
   MINIO_GROUPNAME: "kminio"
   MINIO_UID: "1000"  

@@ -73,13 +73,13 @@ database:
   databaseName: postgres
   databaseUser: postgres
   databaseAdmin: postgres
-  databasePassword: postgres
+  databasePassword: ""
   hiveDatabaseName: hive
   hiveDatabaseUser: hive
-  hiveDatabasePassword: hive
+  hiveDatabasePassword: ""
   unleashDatabaseName: unleash
   unleashDatabaseUser: postgres
-  unleashDatabasePassword: postgres
+  unleashDatabasePassword: ""
 
 # Minio Config
 minioBucket:

@@ -10,7 +10,7 @@ data:
   POSTGRES_SQL_SERVICE_HOST: "{{ .Values.database.postgresSQLServiceHost }}"
   POSTGRES_SQL_SERVICE_PORT: "{{ .Values.database.postgresSQLServicePort }}"
   DATABASE_USER: "{{ .Values.database.databaseUser }}"
-  DATABASE_PASSWORD: "{{ .Values.database.databasePassword }}"
+  DATABASE_PASSWORD: '{{ .Values.database.databasePassword | default "postgres" }}'
   REDIS_HOST: "koku-redis.{{ .Values.namespace }}.svc.cluster.local"
   REDIS_PORT: "6379"
   DEBUG_ATTACH: "False"

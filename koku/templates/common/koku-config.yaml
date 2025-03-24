@@ -14,10 +14,10 @@ data:
   POSTGRES_SQL_SERVICE_PORT: "{{ .Values.database.postgresSQLServicePort }}"
   DATABASE_USER: "{{ .Values.database.databaseUser }}"
   DATABASE_ADMIN: "{{ .Values.database.databaseAdmin }}"
-  DATABASE_PASSWORD: "{{ .Values.database.databasePassword }}"
+  DATABASE_PASSWORD: '{{ .Values.database.databasePassword | default "postgres" }}'
   HIVE_DATABASE_NAME: "{{ .Values.database.hiveDatabaseName }}"
   HIVE_DATABASE_USER: "{{ .Values.database.hiveDatabaseUser }}"
-  HIVE_DATABASE_PASSWORD: "{{ .Values.database.hiveDatabasePassword }}"
+  HIVE_DATABASE_PASSWORD: '{{ .Values.database.hiveDatabasePassword | default "hive" }}'
   DEBUG_ATTACH: "False"
   DEVELOPMENT: "True"
   PROMETHEUS_MULTIPROC_DIR: "/tmp"

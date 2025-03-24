@@ -11,7 +11,7 @@ data:
   POSTGRES_SQL_SERVICE_HOST: "{{ .Values.database.postgresSQLServiceHost }}"
   POSTGRES_SQL_SERVICE_PORT: "{{ .Values.database.postgresSQLServicePort }}"
   DATABASE_USER: "{{ .Values.database.databaseUser }}"
-  DATABASE_PASSWORD: "{{ .Values.database.databasePassword }}"
+  DATABASE_PASSWORD: '{{ .Values.database.databasePassword | default "postgres" }}'
   S3_BUCKET_NAME_OCP_INGRESS: "ocp-ingress"
   S3_BUCKET_NAME: "koku-bucket"
   S3_ENDPOINT: "http://minio.{{ .Values.namespace }}.svc.cluster.local:9000"

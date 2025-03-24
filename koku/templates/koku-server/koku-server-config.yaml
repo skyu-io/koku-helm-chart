@@ -10,7 +10,7 @@ data:
   POSTGRES_SQL_SERVICE_HOST: "{{ .Values.database.postgresSQLServiceHost }}"
   POSTGRES_SQL_SERVICE_PORT: "{{ .Values.database.postgresSQLServicePort }}"
   DATABASE_USER: "{{ .Values.database.databaseUser }}"
-  DATABASE_PASSWORD: "{{ .Values.database.databasePassword }}"
+  DATABASE_PASSWORD: '{{ .Values.database.databasePassword | default "postgres" }}'
   KOKU_SOURCES_CLIENT_HOST: "sources-client"
   KOKU_SOURCES_CLIENT_PORT: "9000"
   DJANGO_READ_DOT_ENV_FILE: "True"

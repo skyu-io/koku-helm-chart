@@ -14,4 +14,5 @@ data:
   POSTGRES_SQL_SERVICE_PORT: "{{ .Values.database.postgresSQLServicePort }}"
   DATABASE_NAME: "{{ .Values.database.hiveDatabaseName }}"
   DATABASE_USER: "{{ .Values.database.hiveDatabaseUser }}"
-  DATABASE_PASSWORD: "{{ .Values.database.hiveDatabasePassword }}"
+  DATABASE_PASSWORD: '{{ .Values.database.hiveDatabasePassword | default "hive" }}'
+  DEBUG_ATTACH: "False"

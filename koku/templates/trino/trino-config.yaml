@@ -19,4 +19,4 @@ data:
   POSTGRES_SQL_SERVICE_PORT: "{{ .Values.database.postgresSQLServicePort }}"
   DATABASE_NAME: "{{ .Values.database.databaseName }}"
   DATABASE_USER: "{{ .Values.database.databaseUser }}"
-  DATABASE_PASSWORD: "{{ .Values.database.databasePassword }}"
+  DATABASE_PASSWORD: '{{ .Values.database.databasePassword | default "postgres" }}'

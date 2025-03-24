@@ -6,7 +6,7 @@ metadata:
 data:
   POSTGRES_DB: "{{ .Values.database.databaseName }}"
   POSTGRES_USER: "{{ .Values.database.databaseUser }}"
-  POSTGRES_PASSWORD: "{{ .Values.database.databasePassword }}"
+  POSTGRES_PASSWORD: '{{ .Values.database.databasePassword | default "postgres" }}'
   _PG_CREATE_DATABASES: "postgres|postgres,unleash|postgres"
   POSTGRES_SQL_SERVICE_PORT: "5432"
   DATABASE_DATA_DIR: "postgresql"

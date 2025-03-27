@@ -60,7 +60,7 @@ redis:
 database:
   databaseServiceName: POSTGRES_SQL
   databaseEngine: postgresql
-  postgresSQLServiceHost: "" # Use koku-db database -> koku-db.{{ .Values.namespace }}.svc.cluster.local"
+  postgresSQLServiceHost: "" 
   postgresSQLServicePort: 5432
   databaseName: ""
   databaseUser: ""

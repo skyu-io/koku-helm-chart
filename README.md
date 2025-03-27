@@ -14,7 +14,10 @@ Ensure you have the following installed before proceeding:
 - Database Setup 
 
 > [!NOTE]
-> Create two new users, named `postgres` and `hive`, and assign secure passwords to each. Configure the necessary permissions, as below. Then, create two databases: `koku` for the `postgres` user and `hive` for the `hive` user. 
+> Create two new users, named `postgres` and `hive`, and assign secure passwords to each. Configure the necessary permissions, as below. Then, create two databases: `koku` for the `postgres` user and `hive` for the `hive` user.
+
+![Screenshot from 2025-03-27 17-58-04](https://github.com/user-attachments/assets/a2a03ca6-5ce1-4fd2-bbf0-a568773a4382)
+![Screenshot from 2025-03-27 17-58-11](https://github.com/user-attachments/assets/6ec17191-e428-45a4-9361-f4308584dce3)
 
 ## Installation Steps
 

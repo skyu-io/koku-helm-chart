@@ -6,17 +6,17 @@ metadata:
 data:
   UNLEASH_ADMIN_TOKEN: "{{ .Values.unleash.adminToken }}" 
   UNLEASH_TOKEN: "{{ .Values.unleash.token }}"  
-  UNLEASH_DATABASE_USER: "{{ .Values.database.unleashDatabaseUser }}"  
+  UNLEASH_DATABASE_USER: '{{ .Values.database.unleashDatabaseUser | default "postgres" }}'  
   UNLEASH_DATABASE_PASSWORD: '{{ .Values.database.unleashDatabasePassword | default "postgres" }}'  
   UNLEASH_PORT: "4242"
   LOG_LEVEL: "INFO"
   DATABASE_HOST: "koku-db.{{ .Values.namespace }}.svc.cluster.local"
-  DATABASE_NAME: "{{ .Values.database.unleashDatabaseName }}"
+  DATABASE_NAME: '{{ .Values.database.unleashDatabaseName | default "unleash" }}'
   DATABASE_SSL: "false"
   IMPORT_DROP_BEFORE_IMPORT: "true"
   IMPORT_FILE: "/.unleash/flags.json"
   CHECK_VERSION: "false"
   INIT_ADMIN_API_TOKENS: "{{ .Values.unleash.adminToken }}"
   INIT_CLIENT_API_TOKENS: "{{ .Values.unleash.token }}"
-  DATABASE_USERNAME: "{{ .Values.database.databaseUser }}"
+  DATABASE_USERNAME: '{{ .Values.database.databaseUser | default "postgres" }}'
   DATABASE_PASSWORD: '{{ .Values.database.databasePassword | default "postgres" }}'

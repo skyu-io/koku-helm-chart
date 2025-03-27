@@ -6,17 +6,17 @@ metadata:
 data:
   DATABASE_SERVICE_NAME: "{{ .Values.database.databaseServiceName }}"
   DATABASE_ENGINE: "{{ .Values.database.databaseEngine }}"
-  DATABASE_NAME: "{{ .Values.database.databaseName }}"
+  DATABASE_NAME: '{{ .Values.database.databaseName | default "postgres" }}'
   PGADMIN_EMAIL: "postgres@local.dev"
   PGADMIN_PASSWORD: "postgres"
   PGADMIN_PORT: "8432"
   POSTGRES_SQL_SERVICE_HOST: "{{ tpl .Values.database.postgresSQLServiceHost . }}"
   POSTGRES_SQL_SERVICE_PORT: "{{ .Values.database.postgresSQLServicePort }}"
-  DATABASE_USER: "{{ .Values.database.databaseUser }}"
-  DATABASE_ADMIN: "{{ .Values.database.databaseAdmin }}"
+  DATABASE_USER: '{{ .Values.database.databaseUser | default "postgres" }}'
+  DATABASE_ADMIN: '{{ .Values.database.databaseAdmin | default "postgres" }}'
   DATABASE_PASSWORD: '{{ .Values.database.databasePassword | default "postgres" }}'
-  HIVE_DATABASE_NAME: "{{ .Values.database.hiveDatabaseName }}"
-  HIVE_DATABASE_USER: "{{ .Values.database.hiveDatabaseUser }}"
+  HIVE_DATABASE_NAME: '{{ .Values.database.hiveDatabaseName | default "hive" }}'
+  HIVE_DATABASE_USER: '{{ .Values.database.hiveDatabaseUser | default "hive" }}'
   HIVE_DATABASE_PASSWORD: '{{ .Values.database.hiveDatabasePassword | default "hive" }}'
   DEBUG_ATTACH: "False"
   DEVELOPMENT: "True"

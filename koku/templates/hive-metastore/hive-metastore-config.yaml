@@ -12,7 +12,7 @@ data:
   S3_BUCKET_PATH: "data"
   POSTGRES_SQL_SERVICE_HOST: "{{ .Values.database.postgresSQLServiceHost }}"
   POSTGRES_SQL_SERVICE_PORT: "{{ .Values.database.postgresSQLServicePort }}"
-  DATABASE_NAME: "{{ .Values.database.hiveDatabaseName }}"
-  DATABASE_USER: "{{ .Values.database.hiveDatabaseUser }}"
+  DATABASE_NAME: '{{ .Values.database.hiveDatabaseName | default "hive" }}'
+  DATABASE_USER: '{{ .Values.database.hiveDatabaseUser | default "hive" }}'
   DATABASE_PASSWORD: '{{ .Values.database.hiveDatabasePassword | default "hive" }}'
   DEBUG_ATTACH: "False"

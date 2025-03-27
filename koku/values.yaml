@@ -68,17 +68,17 @@ redis:
 database:
   databaseServiceName: POSTGRES_SQL
   databaseEngine: postgresql
-  postgresSQLServiceHost: "koku-db.{{ .Values.namespace }}.svc.cluster.local"
+  postgresSQLServiceHost: "koku-db.{{ .Values.namespace }}.svc.cluster.local"  # Use koku-db database -> koku-db.{{ .Values.namespace }}.svc.cluster.local"
   postgresSQLServicePort: 5432
-  databaseName: postgres
-  databaseUser: postgres
-  databaseAdmin: postgres
+  databaseName: ""
+  databaseUser: ""
+  databaseAdmin: ""
   databasePassword: ""
-  hiveDatabaseName: hive
-  hiveDatabaseUser: hive
+  hiveDatabaseName: ""
+  hiveDatabaseUser: ""
   hiveDatabasePassword: ""
-  unleashDatabaseName: unleash
-  unleashDatabaseUser: postgres
+  unleashDatabaseName: ""
+  unleashDatabaseUser: ""
   unleashDatabasePassword: ""
 
 # Minio Config

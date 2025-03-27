@@ -17,6 +17,6 @@ data:
   S3_BUCKET_NAME: "koku-bucket"
   POSTGRES_SQL_SERVICE_HOST: "{{ .Values.database.postgresSQLServiceHost }}"
   POSTGRES_SQL_SERVICE_PORT: "{{ .Values.database.postgresSQLServicePort }}"
-  DATABASE_NAME: "{{ .Values.database.databaseName }}"
-  DATABASE_USER: "{{ .Values.database.databaseUser }}"
+  DATABASE_NAME: '{{ .Values.database.databaseName | default "postgres" }}'
+  DATABASE_USER: '{{ .Values.database.databaseUser | default "postgres" }}'
   DATABASE_PASSWORD: '{{ .Values.database.databasePassword | default "postgres" }}'

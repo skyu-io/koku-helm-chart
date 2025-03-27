@@ -7,10 +7,10 @@ data:
   MASU: "True"
   DATABASE_SERVICE_NAME: "{{ .Values.database.databaseServiceName }}"
   DATABASE_ENGINE: "{{ .Values.database.databaseEngine }}"
-  DATABASE_NAME: "{{ .Values.database.databaseName }}"
+  DATABASE_NAME: '{{ .Values.database.databaseName | default "postgres" }}'
   POSTGRES_SQL_SERVICE_HOST: "{{ .Values.database.postgresSQLServiceHost }}"
   POSTGRES_SQL_SERVICE_PORT: "{{ .Values.database.postgresSQLServicePort }}"
-  DATABASE_USER: "{{ .Values.database.databaseUser }}"
+  DATABASE_USER: '{{ .Values.database.databaseUser | default "postgres" }}'
   DATABASE_PASSWORD: '{{ .Values.database.databasePassword | default "postgres" }}'
   S3_BUCKET_NAME_OCP_INGRESS: "ocp-ingress"
   S3_BUCKET_NAME: "koku-bucket"

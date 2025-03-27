@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: trino
   namespace: {{ .Values.namespace }}
-  annotations:
-    "helm.sh/hook-depends-on": '["deployment/hive-metastore"]'
 spec:
   replicas: {{ .Values.trino.replicas }}
   selector:

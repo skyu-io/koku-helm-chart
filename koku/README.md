@@ -16,6 +16,9 @@ Ensure you have the following installed before proceeding:
 > [!NOTE]
 > Create two new users, named `postgres` and `hive`, and assign secure passwords to each. Configure the necessary permissions, as below. Then, create two databases: `koku` for the `postgres` user and `hive` for the `hive` user.
 
+![Screenshot from 2025-03-27 17-58-04](https://github.com/user-attachments/assets/7948a71f-ea18-4bea-9b70-809d8c577f10)
+![Screenshot from 2025-03-27 17-58-11](https://github.com/user-attachments/assets/86325d7a-918b-48eb-9368-9abb04ec74b6)
+
 ## Installation Steps
 
 ### 1. Add Koku Helm Repository

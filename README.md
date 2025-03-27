@@ -11,6 +11,10 @@ Ensure you have the following installed before proceeding:
 - [Helm](https://helm.sh/docs/intro/install/)
 - Kubernetes cluster configured
 - AWS credentials
+- Database Setup 
+
+> [!NOTE]
+> Create two new users, named postgres and hive, and assign secure passwords to each. Configure the necessary permissions, as below. Then, create two databases: koku for the postgres user and hive for the hive user. 
 
 ## Installation Steps
 
@@ -34,6 +38,14 @@ Replace `<your-aws-access-key-id>` and `<your-aws-secret-access-key>` with your 
 helm install koku koku/koku \
   --set credentials.awsAccessKeyId="<your-aws-access-key-id>" \
   --set credentials.awsSecretAccessKey="<your-aws-secret-access-key>" \
+  --set database.postgresSQLServiceHost="<your-postgres-host>" \
+  --set database.databaseName="<your-database-name>" \
+  --set database.databaseUser="<your-database-user-name>" \
+  --set database.databaseAdmin="<your-database-admin-user-name>" \
+  --set database.databasePassword="<your-database-password>" \
+  --set database.hiveDatabaseName="<your-hive-database-name>" \
+  --set database.hiveDatabaseUser="<your-hive-database-user-name>" \
+  --set database.hiveDatabasePassword="<your-hive-database-password>" \
   --namespace koku --create-namespace
 ```
 

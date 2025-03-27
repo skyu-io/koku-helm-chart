@@ -35,7 +35,7 @@ helm repo update
 
 ### 3. Install Koku
 
-Replace `<your-aws-access-key-id>` and `<your-aws-secret-access-key>` with your actual AWS credentials.
+Replace the following values with your actual values.
 
 ```sh
 helm install koku koku/koku \

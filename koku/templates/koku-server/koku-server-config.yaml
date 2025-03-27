@@ -7,7 +7,7 @@ data:
   DATABASE_SERVICE_NAME: "{{ .Values.database.databaseServiceName }}"
   DATABASE_ENGINE: "{{ .Values.database.databaseEngine }}"
   DATABASE_NAME: '{{ .Values.database.databaseName | default "postgres" }}'
-  POSTGRES_SQL_SERVICE_HOST: "{{ .Values.database.postgresSQLServiceHost }}"
+  POSTGRES_SQL_SERVICE_HOST:  "{{ tpl .Values.database.postgresSQLServiceHost . }}"
   POSTGRES_SQL_SERVICE_PORT: "{{ .Values.database.postgresSQLServicePort }}"
   DATABASE_USER: '{{ .Values.database.databaseUser | default "postgres" }}'
   DATABASE_PASSWORD: '{{ .Values.database.databasePassword | default "postgres" }}'
@@ -39,11 +39,6 @@ data:
   GUNICORN_THREADS: "False"
   RETAIN_NUM_MONTHS: "4"
   NOTIFICATION_CHECK_TIME: "24"
-  UNLEASH_HOST: "unleash.{{ .Values.namespace }}.svc.cluster.local"
-  UNLEASH_PREFIX: "http"
-  UNLEASH_PORT: "4242"
-  UNLEASH_TOKEN: "{{ .Values.unleash.token }}"
-  UNLEASH_LOG_LEVEL: "WARNING"
   QE_SCHEMA: ""
   ENHANCED_ORG_ADMIN: "True"
   TAG_ENABLED_LIMIT: "200"

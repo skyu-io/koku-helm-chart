@@ -10,7 +10,7 @@ data:
   S3_SECRET: "{{ .Values.minioBucket.s3Secret }}"
   S3_BUCKET_NAME: "koku-bucket"
   S3_BUCKET_PATH: "data"
-  POSTGRES_SQL_SERVICE_HOST: "{{ .Values.database.postgresSQLServiceHost }}"
+  POSTGRES_SQL_SERVICE_HOST:  "{{ tpl .Values.database.postgresSQLServiceHost . }}"
   POSTGRES_SQL_SERVICE_PORT: "{{ .Values.database.postgresSQLServicePort }}"
   DATABASE_NAME: '{{ .Values.database.hiveDatabaseName | default "hive" }}'
   DATABASE_USER: '{{ .Values.database.hiveDatabaseUser | default "hive" }}'

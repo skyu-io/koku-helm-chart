@@ -51,14 +51,6 @@ trino:
   image:  public.ecr.aws/v0r6c2e2/trino:latest
   replicas: 1
 
-# Unleash
-unleash: 
-  image:  public.ecr.aws/v0r6c2e2/unleash:latest
-  replicas: 1
-  adminToken: "*:*.dbffffc83b1f92eeaf133a7eb878d4c58231acc159b5e1478ce53cfc"
-  token: "*:development.dbffffc83b1f92eeaf133a7eb878d4c58231acc159b5e1478ce53cfc"
-  patToken: "user:6188b62f2f59348f3c195b66983147111682f4bb78a3f7ed9626bd84"
-
 # Koku Redis
 redis:
   image: redis:5.0.4
@@ -68,7 +60,7 @@ redis:
 database:
   databaseServiceName: POSTGRES_SQL
   databaseEngine: postgresql
-  postgresSQLServiceHost: "koku-db.{{ .Values.namespace }}.svc.cluster.local"  # Use koku-db database -> koku-db.{{ .Values.namespace }}.svc.cluster.local"
+  postgresSQLServiceHost: "" # Use koku-db database -> koku-db.{{ .Values.namespace }}.svc.cluster.local"
   postgresSQLServicePort: 5432
   databaseName: ""
   databaseUser: ""
@@ -77,9 +69,6 @@ database:
   hiveDatabaseName: ""
   hiveDatabaseUser: ""
   hiveDatabasePassword: ""
-  unleashDatabaseName: ""
-  unleashDatabaseUser: ""
-  unleashDatabasePassword: ""
 
 # Minio Config
 minioBucket:

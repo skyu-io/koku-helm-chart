@@ -7,7 +7,7 @@ data:
   DATABASE_SERVICE_NAME: "{{ .Values.database.databaseServiceName }}"
   DATABASE_ENGINE: "{{ .Values.database.databaseEngine }}"
   DATABASE_NAME: '{{ .Values.database.databaseName | default "postgres" }}'
-  POSTGRES_SQL_SERVICE_HOST: "{{ .Values.database.postgresSQLServiceHost }}"
+  POSTGRES_SQL_SERVICE_HOST:  "{{ tpl .Values.database.postgresSQLServiceHost . }}"
   POSTGRES_SQL_SERVICE_PORT: "{{ .Values.database.postgresSQLServicePort }}"
   DATABASE_USER: '{{ .Values.database.databaseUser | default "postgres" }}'
   DATABASE_PASSWORD: '{{ .Values.database.databasePassword | default "postgres" }}'
@@ -20,7 +20,6 @@ data:
   KOKU_LOG_LEVEL: "DEBUG"
   CELERY_LOG_LEVEL: "INFO"
   DJANGO_LOG_LEVEL: "INFO"
-  UNLEASH_LOG_LEVEL: "WARNING"
   DJANGO_SETTINGS_MODULE: "koku.settings"
   PROMETHEUS_MULTIPROC_DIR: "/tmp"
   PROMETHEUS_PUSHGATEWAY: "pushgateway:9091"
@@ -61,8 +60,4 @@ data:
   MAX_CELERY_TASKS_PER_WORKER: "10"
   RETAIN_NUM_MONTHS: "4"
   NOTIFICATION_CHECK_TIME: "24"
-  UNLEASH_HOST: "unleash.{{ .Values.namespace }}.svc.cluster.local"
-  UNLEASH_PREFIX: "http"
-  UNLEASH_PORT: "4242"
-  UNLEASH_TOKEN: "{{ .Values.unleash.token }}"
   ENHANCED_ORG_ADMIN: "True"
